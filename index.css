@@ -12,9 +12,12 @@ html, body{
     align-items:center;
     background-color: white;
     padding:20px;
-    margin-left:100px;
-    margin-right:100px;
     height: 65px;
+    position:sticky;
+    z-index: 1000;
+    top:0;
+    box-shadow: 0px 2px 5px rgb(0,0,0,0.1);
+
     
 }
 .right-nav{
@@ -91,6 +94,7 @@ html, body{
 .get-fed-flex{
     display:flex;
     margin-top:10px;
+    height:40px;
 
 }
 .toggle-btns{
@@ -98,26 +102,29 @@ html, body{
     gap:0;
     margin-right: 10px;
 }
-.toggle-btn1{
+.toggle-btns button{
+    border-radius:6px;
     width:100px;
-    height:50px;
-    border-radius:5px 0px 0px 5px;
-    border:0px
+    border:none;
 }
-.toggle-btn1:hover{
-    cursor: pointer;
+.toggle-btns button:hover{
+    cursor:pointer;
 }
-.toggle-btn2{
-    width:100px;
-    height:50px;
-    border-radius:0px 5px 5px 0px;
-    border:0px;
+.toggle-btns button.active{
+    color:white;
+    background-color: rgb(247, 79, 1);
+    
 }
-.toggle-btn2:hover{
-    cursor: pointer;
+.dropdown-takeout select{
+    width:200px;
+    height:40px;
+    border-radius:5px;
 }
-.email-field{
-    width:500px;
+
+
+.address-form input{
+    height:40px;
+    width:400px;
     border-radius: 5px;
     border:0px;
     padding-left: 10px;
@@ -129,7 +136,7 @@ html, body{
 .fed-btn{
     margin-left: 10px;
     background-color: rgb(250, 101, 46);
-    width: 100px;
+    min-width:100px;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-weight:700;
@@ -197,18 +204,28 @@ html, body{
 .description{
     background-color: rgb(249, 249, 249);
     
+    
 }
 .desc-container{
     display:flex;
     justify-content: space-between;
-    margin:70px 130px 0px 130px;
+    margin:70px auto 0;
+    padding:0 24px;
+    gap:40px;
+    max-width:1200px;
 }
-.image-desc{
-    height:480px;
-    padding: 40px;;
+
+.image-desc {
+    height:auto;
+    max-width:100%;
+    padding:40px;
+    min-width:0;
+    flex:1.2;
 }
 .text-desc{
     padding:40px;
+    min-width:0;
+    flex:1;
 }
 .text-desc h4{
     font-family: Arial, Helvetica, sans-serif;
@@ -253,14 +270,38 @@ html, body{
     width:300px;
     margin-bottom:20px;
     font-family: Arial, Helvetica, sans-serif;
+    border-radius: 7px;
+    border:none;
+    padding-left:13px;
+    
+}
+.deal-field:focus{
+    
+    outline:none;
 }
 .deal-btn{
     height:40px;
-    width:120px;
+    width:100px;
     background-color: rgb(62, 186, 62);
     color:white;
     font-family: Arial, Helvetica, sans-serif;
+    border:0;
+    border-radius:8px;
+    box-shadow:2px 0 6px 4px rgba(0,0,0,0.1);
 }
+.deal-btn:hover{
+    cursor:pointer;
+}
+.input-error {
+    border: 2px solid red;
+    color: red;
+}
+
+.input-error::placeholder {
+    color: red;
+}
+
+
 .checkmark{
     font-family: Arial, Helvetica, sans-serif;
     color: white;
@@ -274,8 +315,8 @@ html, body{
     margin: 0 auto;
     padding: 0 24px;
     display:flex;
-    flex-direction: column;
-    align-items: start;
+    flex-direction:column;
+    
 }
 .locations-section h7{
     margin-top: 80px;
@@ -289,16 +330,21 @@ html, body{
 }
 .locations-grid{
     white-space: pre-line ; /* useful for printing out lists, respects spaces inside html code while also erasing extra spaces */
-    column-count: 4;
+    
     padding:0;
-    column-gap: 100px;
-   
+    
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:24px;
+    justify-content:center;
+    
     
 }
 .state{
     padding:0;
     margin:0;
     break-inside:avoid; /*imp:Prevents elements from spilling contents out to other columns/pages */
+    min-width:0;
 }
 .state h6{
     margin:0;
@@ -315,6 +361,8 @@ html, body{
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(121, 121, 121);
     padding:0;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 .footer-flex{
     margin:30px auto;
@@ -380,4 +428,84 @@ html, body{
 }
 .social-btn:hover{
     cursor: pointer;
+}
+
+@media (max-width: 600px){
+
+    .nav-bar{
+        height:auto;
+        flex-direction:column;
+        padding:10px;
+    }
+    .right-nav{
+        flex-wrap:wrap;
+    }
+    .hero-content h1{
+        font-size: 42px;
+    }
+
+    .hero-content span{
+        font-size: 56px;
+    }
+    .toggle-btns{
+        height:40px;
+        display:flex;
+        justify-content:space-between;
+    }
+    .toggle-btns button{
+        width:48%;
+    }
+    .fed-btn{
+        height:40px;
+    }
+     .toggle-btns,
+  .address-form,
+  .dropdown-takeout,
+  .fed-btn {
+    width: 100%;            /* make all same width */
+    max-width: 400px;       
+  }
+    
+    .get-fed-flex{
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+        width:100%;
+        
+    }
+
+    .address-form input{
+        width: 100%;
+    }
+
+    .fed-btn{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    
+    .desc-container{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .deal-content{
+        width:100%;
+        padding:20px;
+    }
+    .deal-fields{
+        flex-wrap:wrap;
+    }
+    .deal-btn{
+        margin-bottom:14px;
+    }
+    .locations-main{
+        display:none;
+    }
+
+   
+    .footer-flex{
+        display:flex;
+        flex-direction:column;
+    }
 }
